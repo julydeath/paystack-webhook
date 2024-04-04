@@ -1,5 +1,3 @@
-// index.js file
-
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -8,6 +6,10 @@ const secret = process.env.SECRET_KEY;
 const bodyParser = require("body-parser");
 
 const port = 3001;
+
+app.get("/", (req, res) => {
+  res.send(200);
+});
 
 // Paystack Webhook function starts here
 
@@ -36,3 +38,5 @@ app.post("/webhook", function (req, res) {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+module.exports = app;
